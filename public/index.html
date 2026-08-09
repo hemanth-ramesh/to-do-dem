@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, responsive, and modern full-stack Todo application built with Node.js, Express, and Supabase.">
+  <title>TaskFlow — Sleek Todo App</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <main class="app-container">
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="logo-wrapper">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="url(#logo-grad)" />
+          <path d="M7 12L10 15L17 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6366f1" />
+              <stop offset="1" stop-color="#4f46e5" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <h1>TaskFlow</h1>
+      </div>
+      <p class="subtitle">Organize your tasks elegantly</p>
+      
+      <!-- Stats Tracker -->
+      <div id="stats-bar" class="stats-bar hidden">
+        <span id="stats-text">0 of 0 tasks completed</span>
+        <div class="progress-track">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Task Input Form -->
+    <section class="input-section">
+      <form id="todo-form" class="todo-form">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="todo-input" 
+            placeholder="Add a new task..." 
+            autocomplete="off" 
+            maxlength="200"
+            aria-label="New task input"
+            required
+          >
+          <button type="submit" id="add-btn" class="btn-primary" aria-label="Add Task">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Todos Container -->
+    <section class="todos-section">
+      <!-- Loading Indicator -->
+      <div id="loading-indicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Fetching tasks...</p>
+      </div>
+
+      <!-- Todos List -->
+      <ul id="todos-list" class="todos-list hidden"></ul>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon-wrapper">
+          <svg class="empty-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+        </div>
+        <h3>No tasks yet</h3>
+        <p>Create a task to get started on your daily goals.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Powered by Node.js, Express, and Supabase PostgreSQL</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
